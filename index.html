@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Certificate Verification</title>
+<style>
+:root{--blue:#0a58ca}
+body{margin:0;background:#eef2f7;font-family:Segoe UI,Arial,sans-serif}
+.sheet{width:210mm;min-height:297mm;margin:20px auto;background:#fff;padding:18mm;box-shadow:0 4px 20px rgba(0,0,0,.15);position:relative}
+header{text-align:center;border-bottom:3px solid var(--blue);padding-bottom:10px}
+header img{width:85px;height:85px;object-fit:contain}
+h1{margin:8px 0;color:var(--blue)}
+.lang{position:absolute;right:18mm;top:18mm}
+.num{display:flex;justify-content:center;gap:3px;margin:18px 0}
+.num span{border:1px solid #333;padding:6px 8px;font-weight:700}
+table{width:100%;border-collapse:collapse}
+td{padding:10px;border-bottom:1px solid #ddd}
+td:first-child{width:32%;font-weight:700}
+.water{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:90px;color:#19875418;font-weight:800;transform:rotate(-25deg);pointer-events:none}
+small{color:#666}
+</style></head><body>
+<script>
+const DATA={
+logo:"main logo.png",
+certificateNo:"26191342801013983",
+nameBn:"আরাফাত আহমেদ রৌদ্র",nameEn:"Arafat Ahmed Rodro",
+fatherBn:"সামিম আহমেদ",fatherEn:"Shamim Ahmed",
+motherBn:"লাকি আহম্মেদ",motherEn:"Lucky Ahmed",
+presentBn:"গ্রাম/মহল্লাঃ ইসলামপুর, ডাকঘরঃ বিশ্বনাথ, উপজেলাঃ বিশ্বনাথ, জেলাঃ সিলেট",presentEn:"Village/Area: Islampur, PO: Bishwanath, UZ: Bishwanath, District: Sylhet",
+permanentBn:"গ্রাম/মহল্লাঃ ইসলামপুর, ডাকঘরঃ বিশ্বনাথ, উপজেলাঃ বিশ্বনাথ, জেলাঃ সিলেট",permanentEn:"{Village/Area: Islampur, PO: Bishwanath, UZ: Bishwanath, District: Sylhet",
+ward:"05",nid:"6925103993",dob:"18-11-2006",issue:"04-05-2026"
+};
+</script>
+<div class="sheet">
+<div class="water">VERIFIED</div>
+<button class="lang" onclick="bn=!bn;render()">বাংলা / English</button>
+<header><img id="logo"><h1 id="title"></h1><small id="sub"></small></header>
+<div class="num" id="num"></div>
+<table>
+<tr><td id=l1></td><td id=v1></td></tr>
+<tr><td id=l2></td><td id=v2></td></tr>
+<tr><td id=l3></td><td id=v3></td></tr>
+<tr><td id=l4></td><td id=v4></td></tr>
+<tr><td id=l5></td><td id=v5></td></tr>
+<tr><td id=l6></td><td id=v6></td></tr>
+<tr><td id=l7></td><td id=v7></td></tr>
+<tr><td id=l8></td><td id=v8></td></tr>
+<tr><td id=l9></td><td id=v9></td></tr>
+</table></div>
+<script>
+document.getElementById('logo').src=DATA.logo;
+DATA.certificateNo.split('').forEach(c=>{let s=document.createElement('span');s.textContent=c;num.appendChild(s)});
+let bn=false;
+function render(){
+title.textContent=bn?"সনদ যাচাইকরণ":"Certificate Verification";
+sub.textContent=bn?"যাচাইকৃত তথ্য":"Verified Information";
+let L=bn?["নাম","পিতার নাম","মাতার নাম","বর্তমান ঠিকানা","স্থায়ী ঠিকানা","ওয়ার্ড","জাতীয় পরিচয়পত্র","জন্ম তারিখ","ইস্যু তারিখ"]:
+["Name","Father's Name","Mother's Name","Present Address","Permanent Address","Ward No","National ID","Date of Birth","Issue Date"];
+[L1=l1,L2=l2,L3=l3,L4=l4,L5=l5,L6=l6,L7=l7,L8=l8,L9=l9].forEach((e,i)=>e.textContent=L[i]);
+v1.textContent=bn?DATA.nameBn:DATA.nameEn;
+v2.textContent=bn?DATA.fatherBn:DATA.fatherEn;
+v3.textContent=bn?DATA.motherBn:DATA.motherEn;
+v4.textContent=bn?DATA.presentBn:DATA.presentEn;
+v5.textContent=bn?DATA.permanentBn:DATA.permanentEn;
+v6.textContent=DATA.ward;v7.textContent=DATA.nid;v8.textContent=DATA.dob;v9.textContent=DATA.issue;
+}
+render();
+</script></body></html>
